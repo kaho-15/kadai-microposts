@@ -39,6 +39,13 @@ class UsersController < ApplicationController
     counts(@user)
   end
   
+  def likes
+    if logged_in?
+      @micropost = current_user.microposts.build #form_with用
+      @microposts = current_user.feed_microposts.order(id: :desc).page(params[:page])
+    end
+  end
+  
   private
 
   def user_params
