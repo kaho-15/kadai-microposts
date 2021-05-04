@@ -41,7 +41,7 @@ class UsersController < ApplicationController
   
   def likes
     @user = User.find(params[:id])
-    @microposts = @user.like_microposts.page(params[:page])
+    @microposts = @user.likes.page(params[:page])
   end
   
   private
